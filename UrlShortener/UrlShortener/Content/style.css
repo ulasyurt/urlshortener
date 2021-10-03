@@ -1,0 +1,19 @@
+﻿@import "/Content/webfonts/Poppins/stylesheet.css";
+
+body { font-family: 'Poppins' !important; position: relative !important; }
+.row { margin-left: 0 !important; margin-right: 0 !important; }
+
+*:focus{box-shadow:none!important;}
+
+.divRedirectContainer { height: 100vh; display: flex; align-content: center; justify-items: center; align-items:center;  justify-content:center }
+    .divRedirectContainer .redirectGif {width:300px;}
+
+
+.divCardContainer { height: 100vh; display: flex; align-content: center; justify-items: center; align-items: center; justify-content: center }
+    .divCardContainer .divCard { width: 600px;border-radius:10px; }
+        .divCardContainer .divCard .divCardTitle { font-size:18px;font-weight:600; }
+.divListContainer{max-height:400px;overflow-y:auto;padding-right:10px;}
+    .divListContainer::-webkit-scrollbar { width: 10px; }
+    .divListContainer::-webkit-scrollbar-track { background: #f1f1f1; }
+    .divListContainer::-webkit-scrollbar-thumb { background: #888; }
+        .divListContainer::-webkit-scrollbar-thumb:hover { background: #555; }

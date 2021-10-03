@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="urlshortenerModelStoreContainer" CdmEntityContainer="UrlShortenerEntities">
+    <EntitySetMapping Name="url">
+      <EntityTypeMapping TypeName="urlshortenerModel.url">
+        <MappingFragment StoreEntitySet="url">
+          <ScalarProperty Name="LongUrl" ColumnName="LongUrl" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

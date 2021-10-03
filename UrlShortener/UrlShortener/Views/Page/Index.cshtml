@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<input id="apiUrl" value="@ViewData["ApiUrl"]" hidden />
+
+<div class="divCardContainer">
+    <div class="divCard shadow-lg p-4">
+        <div class="divCardTitle">Kısaltmak İstediğiniz URL:</div>
+        <div class="d-flex my-2">
+            <input id="longUrl" placeholder="URL Giriniz..." class="form-control" />
+            <button id="shortenBtn" class="btn btn-primary ml-2">EKLE</button>
+        </div>
+        <div class="divCardTitle">Kısaltılmış URL Listesi:</div>
+        <div class="divListContainer"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(window).on("load", function () {
+        GetShotenURLList();
+    });
+    $("#shortenBtn").on("click", function () {
+        ShortenURL();
+    });
+    function ShortenURL() {
+        var data = { "LongUrl": $("#longUrl").val() }
+        $.ajax({
+            method: "POST",
+            url: $("#apiUrl").val() + "/generator",
+            data: data,
+            success: function (result) {
+                if (result.Success) {
+                    $("#longUrl").val("");
+                    GetShotenURLList();
+                }
+                else {
+                    alert(result.Message);
+                }
+            }
+        });
+    }
+    function GetShotenURLList() {
+        $.ajax({
+            method: "GET",
+            url: $("#apiUrl").val() + "/get-url-list",
+            success: function (result) {
+                if (result.Success) {
+                    $(".divListContainer").html("");
+                    for (var i = 0; i < result.ResultList.length; i++) {
+                        $('<div class="d-flex my-2"><input value="' + result.ResultList[i].LongUrl + '" class= "form-control" /><a target="_blank" href="' + "/" + result.ResultList[i].ShortUrl + '" class="btn btn-primary ml-2">TEST</button></a>').appendTo($(".divListContainer"));
+                    }
+                }
+                else {
+                    alert(result.Message);
+                }
+            }
+        });
+    }
+</script>
